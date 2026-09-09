@@ -34,7 +34,7 @@ def web_scraper(url:str)->str:
         return soup.get_text(separator=" ",strip=True)[:3000]
 
     except Exception as e:
-        return f"Couldn't scrape the url web page"
+        return f"Couldn't scrape the url web page{str(e)}"
 
 
 
