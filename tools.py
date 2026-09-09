@@ -39,4 +39,4 @@ def web_scraper(url:str)->str:
 
 
 
-print(web_scraper.invoke("https://apnews.com/hub/iran"))
+# print(web_scraper.invoke("https://apnews.com/hub/iran"))

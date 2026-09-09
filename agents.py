@@ -11,12 +11,12 @@ llm=ChatGoogleGenerativeAI(
     model="gemini-3.7-flash"
 )
 
-def search_agent():
+def build_search_agent():
     return create_agent(
         model=llm,
         tools=[web_search]
     )
-def scraper_agent():
+def build_reader_agent():
     return create_agent(
         model=llm,
         tools=[web_scraper]
