@@ -23,6 +23,20 @@ def web_search(query:str)->str:
         )
     return "\n-----\n".join(out)
 
+@tool
+def web_scraper(url:str)->str:
+    """Scrap and return clean text from a given url for deeper reading"""
+    try:
+        res=requests.get(url,timeout=8,headers={"User-Agent":"Mozilla/5.0"})
+        soup=BeautifulSoup(res.text,"html.parser")
+        for tag in soup(["script","style","nav","footer"]):
+            tag.decompose()
+        return soup.get_text(separator=" ",strip=True)[:3000]
+
+    except Exception as e:
+        return f"Couldn't scrape the url web page"
 
 
-print(web_search.invoke("what are the latest news on war."))
+
+
+print(web_scraper.invoke("https://apnews.com/hub/iran"))
